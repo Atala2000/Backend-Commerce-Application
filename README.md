@@ -18,6 +18,16 @@ python manage.py runserver
 
 ## API Endpoints
 - `/accounts/register/` - Register a new user
+    ```json
+    {
+        "email": "required_field",
+        "password": "required_field",
+        "first_name": "optional_field",
+        "last_name": "optional_field",
+        "phone_no": "optional_field",
+        "address": "optional_field",
+    }
+    ```
 - `/accounts/login/` - Login a user
     ```json
     {
@@ -26,5 +36,7 @@ python manage.py runserver
     }
     ```
 - `/accounts/logout/` - Logout a user
-  
+  - For it to work needs a user to have logged in
+
 - `/accounts/user/` - Get the user profile
+  
