@@ -17,7 +17,8 @@ python manage.py runserver
 
 
 ## API Endpoints
-- `/accounts/register/` - Register a new user
+- `/accounts/register/` - Register a new user 
+  - Method: `POST`
     ```json
     {
         "email": "required_field",
