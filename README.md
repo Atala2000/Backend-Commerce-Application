@@ -19,7 +19,7 @@ python manage.py runserver
 ## API Endpoints
 - `/accounts/register/` - Register a new user
 - `/accounts/login/` - Login a user
-  : Request: POST
+  <dd>Request: POST</dd>
     : Body: 
     ```json
     {
