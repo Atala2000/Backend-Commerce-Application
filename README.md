@@ -8,10 +8,25 @@ This is a backend application for an e-commerce website. It is built using Djang
 - User reviews and ratings
   
 ## Installation
-1. Clone the repository
-2. Create a virtual environment
-3. Install the dependencies
-4. Run the server
-5. Access the API endpoints
+```bash
+git clone 
+cd backend-ecommerce
+pip install -r requirements.txt
+python manage.py runserver
+```
+
 
 ## API Endpoints
+- `/accounts/register/` - Register a new user
+- `/accounts/login/` - Login a user
+  : Request: POST
+    : Body: 
+    ```json
+    {
+        "email": "test@example.com",
+        "password": "testpassword"
+    }
+    ```
+- `/accounts/logout/` - Logout a user
+  
+- `/accounts/user/` - Get the user profile
