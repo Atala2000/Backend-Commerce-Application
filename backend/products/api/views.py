@@ -2,17 +2,19 @@ from rest_framework import generics, permissions
 from ..models import Category, Product
 from .serializer import CategorySerializer, ProductSerializer
 
-
+## Category View
 class CategoryView(generics.ListAPIView):
     queryset = Category.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = CategorySerializer
 
+## Product View
 class ProductView(generics.ListAPIView):
     queryset = Product.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = ProductSerializer
 
+## Search View
 class ProductSearchView(generics.ListAPIView):
     permission_classes = [permissions.AllowAny]
     serializer_class = ProductSerializer
