@@ -1,16 +1,27 @@
 from rest_framework import serializers
 from accounts.models import CustomUser
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('email', 'first_name', 'last_name', 'address', 'phone_number', 'password')
-        extra_kwargs = {
-            'password': {'write_only': True}
-        }
+        fields = (
+            "email",
+            "password",
+            "first_name",
+            "last_name",
+            "address",
+            "city",
+            "state",
+            "zipcode",
+            "phone",
+            "is_active",
+            "is_staff",
+        )
+        extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
-        password = validated_data.pop('password', None)
+        password = validated_data.pop("password", None)
         instance = self.Meta.model(**validated_data)
         if password is not None:
             instance.set_password(password)
@@ -19,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         for attr, value in validated_data.items():
-            if attr == 'password':
+            if attr == "password":
                 instance.set_password(value)
             else:
                 setattr(instance, attr, value)
