@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "accounts",
     "products",
+    "cart",
 ]
 
 MIDDLEWARE = [
@@ -106,6 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+CART_SESSION_ID = 'cart'
 
 
 # Frameworks
