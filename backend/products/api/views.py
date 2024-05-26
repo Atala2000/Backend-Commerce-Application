@@ -14,6 +14,12 @@ class ProductView(generics.ListAPIView):
     permission_classes = [permissions.AllowAny]
     serializer_class = ProductSerializer
 
+## Product Updtate View by admin only
+class UpdateProductView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+    serializer_class = ProductSerializer
+
 ## Search View
 class ProductSearchView(generics.ListAPIView):
     permission_classes = [permissions.AllowAny]
