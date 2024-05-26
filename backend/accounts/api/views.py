@@ -69,3 +69,4 @@ class UserAPIView(APIView):
         return Response(
             {"message": "User deleted successfully."}, status=status.HTTP_200_OK
         )
+        
