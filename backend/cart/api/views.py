@@ -12,7 +12,7 @@ from django.http import JsonResponse
 class CartViews(generics.ListCreateAPIView):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    permission_classes = [IsAuthenticated]
+    ##permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Cart.objects.filter(user=self.request.user)
@@ -21,10 +21,10 @@ class CartViews(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 ## create a view for the cart items
-class CartItemViews(generics.ListCreateAPIView):
+class CartItemViews(generics.CreateAPIView):
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
-    permission_classes = [IsAuthenticated]
+    ##permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         cart, created = Cart.objects.get_or_create(user=self.request.user)
