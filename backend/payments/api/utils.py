@@ -35,7 +35,7 @@ def create_payment(amount, return_url, cancel_url):
         "transactions": [{
             "amount": {
                 "total": f"{amount:.2f}",
-                "currency": "USD"
+                "currency": "KES"
             },
             "description": "Payment description."
         }],
