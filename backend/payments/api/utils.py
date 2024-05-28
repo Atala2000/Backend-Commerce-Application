@@ -1,5 +1,3 @@
-# paypal_utils.py
-
 import requests
 from django.conf import settings
 
@@ -18,15 +16,27 @@ def get_paypal_token():
     response.raise_for_status()
     return response.json()['access_token']
 
-def create_payment(amount, return_url, cancel_url):
+def create_payment(cart, return_url, cancel_url):
     token = get_paypal_token()
     url = f"{PAYPAL_API_BASE}/v1/payments/payment"
 
-    amount = float(amount)
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {token}"
     }
+
+    amount = float(cart['total_price'])
+    items = [
+        {
+            "name": item['product_name'],
+            "sku": str(item['product']),
+            "price": item['price'],
+            "currency": "KES",
+            "quantity": item['quantity']
+        }
+        for item in cart['items']
+    ]
+
     payload = {
         "intent": "sale",
         "payer": {
@@ -37,13 +47,17 @@ def create_payment(amount, return_url, cancel_url):
                 "total": f"{amount:.2f}",
                 "currency": "KES"
             },
-            "description": "Payment description."
+            "item_list": {
+                "items": items
+            },
+            "description": "Purchase from cart"
         }],
         "redirect_urls": {
             "return_url": return_url,
             "cancel_url": cancel_url
         }
     }
+
     response = requests.post(url, headers=headers, json=payload)
     response.raise_for_status()
     return response.json()
