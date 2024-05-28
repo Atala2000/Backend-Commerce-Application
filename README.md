@@ -137,18 +137,21 @@ To test the endpoints using Postman:
 Endpoint for viewing the contents of the user's cart.
 - **URL:** `/cart/`
 - **Method:** `GET`
+- **Permission:** Allow any user.
 - **Description:** Returns the items in the user's cart.
 
 ### List Cart Items
 Adding items to the cart
 - **URL:** `/cart/items/`
 - **Method:** `POST`
+- **Permission:** Allow any user.
 - **Description:** Returns a list of all items in the user's cart.
 
 ### Clear Cart
 Endpoint for clearing the user's cart.
 - **URL:** `/cart/clear/`
 - **Method:** `POST`
+- **Permission:** Allow any user.
 - **Description:** Clears all items from the user's cart.
 
 ## License
