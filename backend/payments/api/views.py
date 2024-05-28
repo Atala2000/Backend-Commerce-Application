@@ -89,7 +89,7 @@ def create_history(response):
 
         # Process payment status
         payment_status = response["state"]
-        
+
         user = CustomUser.objects.get(email=payer_email)
 
         # Create a new payment history entry
