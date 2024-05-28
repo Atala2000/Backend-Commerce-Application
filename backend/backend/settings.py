@@ -91,10 +91,10 @@ DATABASES = {
 # Paypal Payments
 PAYPAL_MODE = "sandbox"
 PAYPAL_CLIENT_ID = (
-    "Af7Ql968TMobhzBXLjLJi491I6Kt7uw0gZCV4mvxl4jWjQCei5fpTFPa8_RD_cQWYBJy2GXMdFRP8ECE"
+    "AWX0aEQAporwIK576vKnvZWRkcvlic0udzcB1Tmzi9wlvd43jXSgqmrMxOLNOJx2ooBZdeWuJzSGj1Hl"
 )
 PAYPAL_CLIENT_SECRET = (
-    "EObTk5zr_9bImjsY7p4jPspz6XpOU1ADyBuFiDTzNVsnCIlI37hvCLlrs7PN1V30Kr-kTy_Vh6QtD1Vg"
+    "ENoAuoVxxXfrJXdiGomgWnww3Qw5pIk0gS-tVmIPc1rkNCnAjucRZN9mDqWyFVvxv2rm1yTkeV2oUKk_"
 )
 
 # Password validation
