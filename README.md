@@ -199,4 +199,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any inquiries, please contact [cyrilondanje@gmail.com](mailto:cyrilondanje@gmail.com).
+For any inquiries, please contact:
+[cyrilondanje@gmail.com](mailto:cyrilondanje@gmail.com).
+[atalakidi@gmail.com](mailto:atalakidi@gmail.com)
