@@ -48,6 +48,7 @@ This is a backend application for an e-commerce website. It is built using Djang
 
 
 ## API Endpoints
+### Accounts Endpoints
 - `/accounts/register/` - Register a new user
   - Method: `POST`
     ```json
@@ -153,6 +154,36 @@ Endpoint for clearing the user's cart.
 - **Method:** `POST`
 - **Permission:** Allow any user.
 - **Description:** Clears all items from the user's cart.
+
+## Payment Endpoints
+### Create Payment
+Endpoint for creating a payment.
+- **URL:** `/payments/process/`
+- **Method:** `POST`
+- **Permission:** Allow any user.
+- **Description:** Creates a payment for the user's cart.
+- ```json
+    {
+        "payment_method": "required_field",
+        "total": "required_field",
+        "price": "required_field",
+    }
+    ```
+
+### Execute Payment
+Endpoint for executing a payment.
+- **URL:** `/payments/execute/`
+- **Method:** `POST`
+- **Permission:** Allow any user.
+- **Description:** Executes a payment for the user's cart.
+- ```json
+    {
+        "payment_method": "required_field",
+        "total": "required_field",
+        "price": "required_field",
+    }
+    ```
+
 
 ## License
 
