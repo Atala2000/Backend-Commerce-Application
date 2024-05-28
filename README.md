@@ -132,6 +132,25 @@ To test the endpoints using Postman:
    - **URL:** `http://localhost:8000/api/products/search/?q=<search_term>`
    - **Method:** `GET`
 
+## Cart Endpoints
+### View Cart
+Endpoint for viewing the contents of the user's cart.
+- **URL:** `/cart/`
+- **Method:** `GET`
+- **Description:** Returns the items in the user's cart.
+
+### List Cart Items
+Adding items to the cart
+- **URL:** `/cart/items/`
+- **Method:** `POST`
+- **Description:** Returns a list of all items in the user's cart.
+
+### Clear Cart
+Endpoint for clearing the user's cart.
+- **URL:** `/cart/clear/`
+- **Method:** `POST`
+- **Description:** Clears all items from the user's cart.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
