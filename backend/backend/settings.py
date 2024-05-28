@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "accounts",
     "products",
     "cart",
+    "payments",
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,15 @@ DATABASES = {
 }
 
 
+# Paypal Payments
+PAYPAL_MODE = "sandbox"
+PAYPAL_CLIENT_ID = (
+    "Af7Ql968TMobhzBXLjLJi491I6Kt7uw0gZCV4mvxl4jWjQCei5fpTFPa8_RD_cQWYBJy2GXMdFRP8ECE"
+)
+PAYPAL_CLIENT_SECRET = (
+    "EObTk5zr_9bImjsY7p4jPspz6XpOU1ADyBuFiDTzNVsnCIlI37hvCLlrs7PN1V30Kr-kTy_Vh6QtD1Vg"
+)
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -105,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = "accounts.CustomUser"
 
-CART_SESSION_ID = 'cart'
+CART_SESSION_ID = "cart"
 
 
 # Frameworks
