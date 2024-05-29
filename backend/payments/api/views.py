@@ -1,10 +1,12 @@
 import json
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from .utils import create_payment, execute_payment
+from history.models import PaymentHistory
 from cart.models import CartItem
+from accounts.models import CustomUser
 import logging
 
 # Configure logging
@@ -38,8 +40,12 @@ def payment_execute(request):
     payer_id = request.GET.get("PayerID")
     try:
         payment = execute_payment(payment_id, payer_id)
+        # Create a new payment history entry
+        response = create_history(payment)
         return JsonResponse(
-            {"status": "Payment executed successfully", "payment": payment}
+            {
+                "response": payment,
+            }
         )
     except Exception as e:
         # logger.error("Payment execute error: %s", str(e))
@@ -68,3 +74,43 @@ def get_cart_data(user):
     total_price = sum(item["quantity"] * float(item["price"]) for item in items)
 
     return {"items": items, "total_price": total_price}
+
+
+
+def create_history(response):
+    try:
+        # Extract payment details
+        payment_id = response["id"]
+        transaction_amount = response["transactions"][0]["amount"]["total"]
+        payer_email = response["payer"]["payer_info"]["email"]
+
+        # Process payer shipping address (if available)
+        shipping_address = response["payer"]["payer_info"].get("shipping_address", {})
+
+        # Process payment status
+        payment_status = response["state"]
+        
+        user = CustomUser.objects.get(email=payer_email)
+
+        # Create a new payment history entry
+        payment = PaymentHistory.objects.create(
+            user=user,
+            transaction_id=payment_id,
+            amount=transaction_amount,
+            status=payment_status
+            # You can add more attributes as needed
+        )
+
+        # Return a success response
+        return JsonResponse({"success": True})
+
+    except KeyError as e:
+        # Handle missing keys in the response
+        print("Error:", e)
+        return JsonResponse({"error": str(e)}, status=400)
+
+    except Exception as e:
+        # Handle other exceptions
+        print("Error:", e)
+        return JsonResponse({"error": "Internal server error"}, status=500)
+

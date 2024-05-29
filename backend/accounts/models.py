@@ -25,8 +25,6 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
-    first_name = models.CharField(max_length=30, blank=True)
-    last_name = models.CharField(max_length=30, blank=True)
     address = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255, blank=True)
     state = models.CharField(max_length=255, blank=True)
