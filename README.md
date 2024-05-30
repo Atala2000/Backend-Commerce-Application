@@ -8,6 +8,13 @@ This is a backend application for an e-commerce website. It is built using Djang
 - User reviews and ratings
 
 
+## Requirements
+- Python 3.6+
+- Django 3.0+
+- Django Rest Framework 3.11+
+- Redis 5.0+
+- Postman 7.34+ (optional)
+
 ## Installation
 
 1. **Clone the repository:**
