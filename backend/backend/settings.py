@@ -78,6 +78,19 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
+
+# Caching
+BACKEND = "django.core.cache.backends.redis.RedisCache"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379",
+    }
+}
+
+SESSION_ENGINE =  "django.contrib.sessions.backends.cached_db"
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
