@@ -142,8 +142,6 @@ MPESA_SHORTCODE_TYPE = 'till_number'
 
 MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
 
-MPESA_INITIATOR_USERNAME = 'testapi'
-
 MPESA_CALLBACK_URL = 'https://yourdomain.com/mpesa/callback/'
 
 
