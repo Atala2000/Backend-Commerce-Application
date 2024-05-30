@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "cart",
     "payments",
     "history",
+    "mpesa",
+    "django_daraja",
 ]
 
 MIDDLEWARE = [
@@ -115,6 +117,22 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+# Mpesa Payments
+MPESA_ENVIRONMENT = "sandbox"
+MPESA_CONSUMER_KEY = "iQIcJA192nTBHpQtISegp5OsbTO0NFzNpkES6H6XWgBL58Ye"
+MPESA_CONSUMER_SECRET = "p28QUhLQlKdwkTg2pNO2GF3SAAz77hLaFRkZqJeYU0Jn7lZUDfFX6IKnnCQHJxkE"
+
+MPESA_SHORTCODE = 174379
+MPESA_EXPRESS_SHORTCODE = "MPESA Express"
+
+MPESA_SHORTCODE_TYPE = 'till_number'
+
+MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+
+MPESA_INITIATOR_USERNAME = 'testapi'
+
+MPESA_CALLBACK_URL = 'https://yourdomain.com/mpesa/callback/'
+
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
