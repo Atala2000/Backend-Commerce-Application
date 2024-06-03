@@ -224,6 +224,55 @@ Initiate M-Pesa Payment
 - **Description:** This endpoint allows users to view their order history.
 - **Name:**  order_history
 
+## Using Localtunnel or Ngrok for Public URLs
+To test M-Pesa callbacks, you need a publicly accessible URL. You can use Localtunnel or Ngrok for this purpose.
+
+### Using Localtunnel
+Install Localtunnel:
+
+bash
+```
+npm install -g localtunnel
+```
+
+Start Localtunnel:
+
+bash
+```
+lt --port 8000
+```
+Replace 8000 with your Django server's port if different. Note the URL provided by Localtunnel (e.g., https://abcd.loca.lt).
+
+### Configure M-Pesa:
+Use the provided URL as the callback URL in your M-Pesa configuration. For example, https://abcd.loca.lt/mpesa/callback/.
+
+### Using Ngrok
+Install Ngrok:
+Download and install Ngrok from ngrok.com.
+
+Start Ngrok:
+bash
+```
+ngrok http 8000
+```
+Replace 8000 with your Django server's port if different. Note the URL provided by Ngrok (e.g., https://1234.ngrok.io).
+
+### Configure M-Pesa:
+Use the provided URL as the callback URL in your M-Pesa configuration. For example, https://1234.ngrok.io/mpesa/callback/.
+
+## Usage
+### Initiate Payment:
+
+Make a POST request to /mpesa/ with the required payment details in the request body.
+
+### Handle Callback:
+
+The /mpesa/callback/ endpoint will automatically handle the response from M-Pesa after the payment process.
+
+### View Order History:
+
+Navigate to /orders/history/ to view the order history.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
