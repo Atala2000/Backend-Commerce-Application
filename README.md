@@ -5,7 +5,6 @@ This is a backend application for an e-commerce website. It is built using Djang
 - Order management
 - Payment processing
 - User profile management
-- User reviews and ratings
 
 
 ## Requirements
@@ -191,6 +190,20 @@ Endpoint for executing a payment.
     }
     ```
 
+## Payment History Endpoints
+### List Payment History
+Endpoint for listing the user's payment history.
+- **URL:** `/history/`
+- **Method:** `GET`
+- **Permission:** Logged in user.
+- **Description:** Returns a list of all payments made by the user.
+  
+### Retrieve Payment History
+Endpoint for retrieving a payment by ID.
+- **URL:** `/history/<str:transaction_id>/`
+- **Method:** `GET`
+- **Permission:** Logged in user.
+- **Description:** Returns a payment by its transaction ID.
 
 ## License
 
