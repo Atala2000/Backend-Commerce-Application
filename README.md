@@ -162,7 +162,7 @@ Endpoint for clearing the user's cart.
 - **Description:** Clears all items from the user's cart.
 
 ## Payment Endpoints
-### Create Payment
+### Create Payment(Paypal)
 Endpoint for creating a payment.
 - **URL:** `/payments/process/`
 - **Method:** `POST`
@@ -197,13 +197,81 @@ Endpoint for listing the user's payment history.
 - **Method:** `GET`
 - **Permission:** Logged in user.
 - **Description:** Returns a list of all payments made by the user.
-  
+
 ### Retrieve Payment History
 Endpoint for retrieving a payment by ID.
 - **URL:** `/history/<str:transaction_id>/`
 - **Method:** `GET`
 - **Permission:** Logged in user.
 - **Description:** Returns a payment by its transaction ID.
+
+## Mpesa Payment
+### Initiate payment
+Initiate M-Pesa Payment
+- **URL:** /mpesa/
+- **Method:** POST
+- **Description:** This endpoint initiates a payment process using M-Pesa.
+- **Name:** initiate_payment
+
+### M-Pesa Callback
+- **URL:**  /mpesa/callback/
+- **Description:**  This endpoint handles the callback from M-Pesa after a payment is processed.
+- **Name:** mpesa_callback
+
+### Mpesa Order History
+- **URL:**  /orders/history/
+- **Method:** GET
+- **Description:** This endpoint allows users to view their order history.
+- **Name:**  order_history
+
+## Using Localtunnel or Ngrok for Public URLs
+To test M-Pesa callbacks, you need a publicly accessible URL. You can use Localtunnel or Ngrok for this purpose.
+
+### Using Localtunnel
+Install Localtunnel:
+
+bash
+```
+npm install -g localtunnel
+```
+
+Start Localtunnel:
+
+bash
+```
+lt --port 8000
+```
+Replace 8000 with your Django server's port if different. Note the URL provided by Localtunnel (e.g., https://abcd.loca.lt).
+
+### Configure M-Pesa:
+Use the provided URL as the callback URL in your M-Pesa configuration. For example, https://abcd.loca.lt/mpesa/callback/.
+
+### Using Ngrok
+Install Ngrok:
+Download and install Ngrok from ngrok.com.
+
+Start Ngrok:
+bash
+```
+ngrok http 8000
+```
+Replace 8000 with your Django server's port if different. Note the URL provided by Ngrok (e.g., https://1234.ngrok.io).
+
+### Configure M-Pesa:
+Use the provided URL as the callback URL in your M-Pesa configuration. For example, https://1234.ngrok.io/mpesa/callback/.
+
+## Usage
+### Initiate Payment:
+
+Make a POST request to /mpesa/ with the required payment details in the request body.
+
+### Handle Callback:
+
+The /mpesa/callback/ endpoint will automatically handle the response from M-Pesa after the payment process.
+
+### View Order History:
+
+Navigate to /orders/history/ to view the order history.
 
 ## License
 

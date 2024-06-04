@@ -1,6 +1,7 @@
 from django.db import models
 from products.models import Product
 
+
 # Create your models here.
 class Order(models.Model):
     user = models.ForeignKey('accounts.CustomUser', on_delete=models.CASCADE)
@@ -19,4 +20,3 @@ class OrderItem(models.Model):
     def __str__(self) -> str:
         return f'Order Item #{self.pk} - Order: {self.order.pk} - Product: {self.product.name} - Quantity: {self.quantity} - Price: {self.price}'
 
-    

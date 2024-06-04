@@ -39,11 +39,11 @@ def lipa_na_mpesa_online(phone_number, amount, reference, callback_url):
 		"Password": password,
 		"Timestamp": timestamp,
 		"TransactionType": "CustomerPayBillOnline",
-		"Amount": amount,
+		"Amount": 1,
 		"PartyA": phone_number,
 		"PartyB": 174379,
 		"PhoneNumber": phone_number,
-		"CallBackURL": "https://mydomain.com/path",
+		"CallBackURL": "https://better-grapes-post.loca.lt/mpesa/callback/",
 		"AccountReference": "CompanyXLTD",
 		"TransactionDesc": "Payment of X"
 	}
